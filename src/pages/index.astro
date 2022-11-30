@@ -1,8 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
----
 
+const response = await fetch('https://web-maker.azurewebsites.net/api/WeatherForecast/');
+const data = await response.json();
+
+---
+<ul>
+	{data.map(item => (
+		<li>{item.summary}</li>
+	))}
+</ul>
 <Layout title="Welcome to Astro.">
 	<main>
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
